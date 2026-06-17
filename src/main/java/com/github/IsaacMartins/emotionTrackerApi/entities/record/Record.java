@@ -1,0 +1,48 @@
+package com.github.IsaacMartins.emotionTrackerApi.entities.record;
+
+import com.github.IsaacMartins.emotionTrackerApi.entities.emotion.Mood;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.UUID;
+
+@Getter
+@Setter
+@AllArgsConstructor
+
+@Entity
+@Table(name = "tb_record")
+@EntityListeners(AuditingEntityListener.class)
+public class Record {
+
+    @Id
+    @Column
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
+
+    @Column
+    private Mood mood;
+
+    @OneToMany(mappedBy = "record", fetch = FetchType.LAZY)
+    private List<RecordEmotion> emotionList;
+
+    @OneToOne(mappedBy = "record")
+    private Situation situation;
+
+    @Column
+    private String description;
+
+    @Column(name = "created_at")
+    @CreatedDate
+    private LocalDateTime createdAt;
+
+    @Column(name = "updated_at")
+    @LastModifiedDate
+    private LocalDateTime updatedAt;
+}
