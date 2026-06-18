@@ -1,10 +1,9 @@
 package com.github.IsaacMartins.emotionTrackerApi.entities.emotion;
 
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.AllArgsConstructor;
 
-@Getter(AccessLevel.PUBLIC)
+@Getter
 @AllArgsConstructor
 public enum Mood {
 

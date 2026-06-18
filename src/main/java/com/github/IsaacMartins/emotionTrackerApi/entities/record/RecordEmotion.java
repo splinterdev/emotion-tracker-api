@@ -2,15 +2,15 @@ package com.github.IsaacMartins.emotionTrackerApi.entities.record;
 
 import com.github.IsaacMartins.emotionTrackerApi.entities.emotion.Emotion;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.UUID;
 
 @Getter
 @Setter
-@AllArgsConstructor
+@NoArgsConstructor
 
 @Entity
 @Table(name = "tb_record_emotion")
@@ -25,6 +25,7 @@ public class RecordEmotion {
     @JoinColumn(name = "record_id")
     private Record record;
 
+    @Enumerated(EnumType.STRING)
     @Column
     private Emotion emotion;
 }
