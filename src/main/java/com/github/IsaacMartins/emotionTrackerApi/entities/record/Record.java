@@ -29,10 +29,10 @@ public class Record {
     @Column
     private Mood mood;
 
-    @OneToMany(mappedBy = "record", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "record", cascade = CascadeType.PERSIST)
     private List<RecordEmotion> emotionList;
 
-    @OneToOne(mappedBy = "record")
+    @OneToOne(mappedBy = "record", cascade = CascadeType.PERSIST)
     private Situation situation;
 
     @Column
