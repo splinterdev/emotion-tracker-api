@@ -52,13 +52,13 @@ public class RecordService {
 
         List<ChartPoint> points = new ArrayList<>();
 
-        LocalDateTime sevenDaysBefore = LocalDateTime.of(
+        LocalDateTime daysBeforeRequest = LocalDateTime.of(
                 requestDate.getYear(),
                 requestDate.getMonth(),
                 requestDate.getDayOfMonth(),
                 0, 0, 0).minusDays(6);
 
-        Optional<List<Record>> possibleRecordList = repository.findAllLastWeek(requestDate, sevenDaysBefore);
+        Optional<List<Record>> possibleRecordList = repository.findAllBetween(requestDate, daysBeforeRequest);
 
         if(possibleRecordList.isPresent()) {
 
