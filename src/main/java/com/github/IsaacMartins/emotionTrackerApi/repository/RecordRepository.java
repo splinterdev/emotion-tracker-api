@@ -19,6 +19,6 @@ public interface RecordRepository extends JpaRepository<Record, UUID> {
     @Query("select r from Record r left join fetch r.emotionList e left join fetch r.situation s")
     Page<Record> findAllComplete(Pageable pageRequest);
 
-    @Query("select r from Record r where r.createdAt between :daysBeforeRequest and :requestDate order by r.createdAt desc")
-    Optional<List<Record>> findAllBetween(@Param("requestDate") LocalDateTime requestDate, @Param("daysBeforeRequest") LocalDateTime daysBeforeRequest);
+    @Query("select r from Record r where r.createdAt between :dayBeforeRequest and :requestDate order by r.createdAt desc")
+    Optional<List<Record>> findAllBetween(@Param("requestDate") LocalDateTime requestDate, @Param("dayBeforeRequest") LocalDateTime dayBeforeRequest);
 }
