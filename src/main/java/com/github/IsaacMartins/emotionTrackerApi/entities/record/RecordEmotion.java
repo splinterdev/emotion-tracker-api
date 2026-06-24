@@ -2,6 +2,7 @@ package com.github.IsaacMartins.emotionTrackerApi.entities.record;
 
 import com.github.IsaacMartins.emotionTrackerApi.entities.emotion.Emotion;
 import jakarta.persistence.*;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,6 +11,7 @@ import java.util.UUID;
 
 @Getter
 @Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 
 @Entity
@@ -25,7 +27,8 @@ public class RecordEmotion {
     @JoinColumn(name = "record_id")
     private Record record;
 
-    @Enumerated(EnumType.STRING)
     @Column
+    @Enumerated(EnumType.STRING)
+    @EqualsAndHashCode.Include
     private Emotion emotion;
 }
