@@ -1,14 +1,14 @@
 package com.github.IsaacMartins.emotionTrackerApi.entities.record;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.UUID;
 
 @Getter
 @Setter
+@ToString
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 
 @Entity
@@ -21,12 +21,15 @@ public class Situation {
     private UUID id;
 
     @Column
+    @EqualsAndHashCode.Include
     private String title;
 
     @Column
+    @EqualsAndHashCode.Include
     private String thought;
 
     @Column
+    @EqualsAndHashCode.Include
     private String behavior;
 
     @OneToOne(fetch = FetchType.LAZY)

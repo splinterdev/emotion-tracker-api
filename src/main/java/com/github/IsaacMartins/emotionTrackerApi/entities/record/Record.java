@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -14,6 +15,7 @@ import java.util.UUID;
 
 @Getter
 @Setter
+@ToString
 @NoArgsConstructor
 
 @Entity
@@ -27,6 +29,7 @@ public class Record {
     private UUID id;
 
     @Column
+    @Enumerated(EnumType.STRING)
     private Mood mood;
 
     @OneToMany(mappedBy = "record", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)

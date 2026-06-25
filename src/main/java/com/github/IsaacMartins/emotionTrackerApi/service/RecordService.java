@@ -10,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -20,6 +21,19 @@ public class RecordService {
     private final RecordRepository repository;
 
     public Record create(Record record) {
+
+        List<RecordEmotion> emotionList = record.getEmotionList();
+
+        for(RecordEmotion e : emotionList) {
+
+            e.setRecord(record);
+        }
+
+        if(record.getSituation() != null) {
+
+            Situation situation = record.getSituation();
+            situation.setRecord(record);
+        }
 
         return repository.save(record);
     }
@@ -50,7 +64,7 @@ public class RecordService {
 
         record.setMood(mappedRequest.getMood());
         record.setDescription(mappedRequest.getDescription());
-        updateEmotionList(mappedEmotionList, currentEmotionList);
+        updateEmotionList(record, mappedEmotionList, currentEmotionList);
         updateSituation(record, currentSituation, mappedSituation);
 
         return repository.save(record);
@@ -71,11 +85,9 @@ public class RecordService {
                 requestDate.getDayOfMonth(),
                 0, 0, 0).minusDays(6);
 
-        Optional<List<Record>> possibleRecordList = repository.findAllBetween(requestDate, dayBeforeRequest);
+        List<Record> recordList = repository.findAllBetween(requestDate, dayBeforeRequest);
 
-        if(possibleRecordList.isPresent()) {
-
-            List<Record> recordList = possibleRecordList.get();
+        if(!recordList.isEmpty()) {
 
             generateMoodPoints(requestDate, recordList, points);
         }
@@ -87,8 +99,8 @@ public class RecordService {
 
         for(int i = 0; i < 7; i++) {
 
-            LocalDateTime dateTime = requestDate.minusDays(i);
-            int day = dateTime.getDayOfMonth();
+            LocalDate date = requestDate.minusDays(i).toLocalDate();
+            int day = date.getDayOfMonth();
             double averageDayMood = 0;
 
             List<Record> specificDayRecords = recordList
@@ -104,7 +116,7 @@ public class RecordService {
                         .reduce(0.0, Double::sum) / specificDayRecords.size();
             }
 
-            points.add(new ChartPoint(day, averageDayMood, dateTime));
+            points.add(new ChartPoint(day, averageDayMood, date));
         }
     }
 
@@ -116,22 +128,39 @@ public class RecordService {
             currentSituation.setThought(mappedSituation.getThought());
             currentSituation.setBehavior(mappedSituation.getBehavior());
 
+            record.setUpdatedAt(LocalDateTime.now());
+
         } else if(currentSituation == null && mappedSituation != null) {
 
+            mappedSituation.setRecord(record);
             record.setSituation(mappedSituation);
+
+            record.setUpdatedAt(LocalDateTime.now());
+
+        } else if(currentSituation != null && mappedSituation == null) {
+
+            record.setSituation(null);
+
+            record.setUpdatedAt(LocalDateTime.now());
         }
     }
 
-    private static void updateEmotionList(List<RecordEmotion> mappedEmotionList, List<RecordEmotion> currentEmotionList) {
+    private static void updateEmotionList(Record record, List<RecordEmotion> mappedEmotionList, List<RecordEmotion> currentEmotionList) {
 
-        for(RecordEmotion mre : mappedEmotionList) {
+        if(!mappedEmotionList.equals(currentEmotionList)) {
 
-            if(!currentEmotionList.contains(mre)) {
+            for(RecordEmotion mre : mappedEmotionList) {
 
-                currentEmotionList.add(mre);
+                if(!currentEmotionList.contains(mre)) {
+
+                    mre.setRecord(record);
+                    currentEmotionList.add(mre);
+                }
             }
-        }
 
-        currentEmotionList.removeIf(re -> !mappedEmotionList.contains(re));
+            currentEmotionList.removeIf(re -> !mappedEmotionList.contains(re));
+
+            record.setUpdatedAt(LocalDateTime.now());
+        }
     }
 }

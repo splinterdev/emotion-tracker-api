@@ -17,11 +17,11 @@ public abstract class RecordMapper {
     RecordEmotionMapper emotionMapper;
 
 
-    @Mapping(target = "emotionList", expression = "java( emotionMapper.toEntities(recordDTO.emotions()) )")
+    @Mapping(target = "emotionList", expression = "java( emotionMapper.toEntityList(recordDTO.emotions()) )")
     @Mapping(target = "situation", expression = "java( situationMapper.toEntity(recordDTO.situation()) )")
     public abstract Record toEntity(RecordRequestDTO recordDTO);
 
-    @Mapping(target = "emotions", expression = "java( emotionMapper.toDTOs(record.getEmotionList()) )")
+    @Mapping(target = "emotions", expression = "java( emotionMapper.toDTOList(record.getEmotionList()) )")
     @Mapping(target = "situation" , expression = "java( situationMapper.toDTO(record.getSituation()) )")
     public abstract RecordResponseDTO toResponseDTO(Record record);
 }

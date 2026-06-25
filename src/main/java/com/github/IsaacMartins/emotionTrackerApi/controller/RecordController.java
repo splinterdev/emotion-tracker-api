@@ -72,13 +72,12 @@ public class RecordController implements GenericController {
         if(possibleRecord.isPresent()) {
 
             Record record = possibleRecord.get();
-
             Record mappedRequest = mapper.toEntity(requestDTO);
-
             Record updated = service.update(record, mappedRequest);
 
-            return ResponseEntity.ok(updated);
-        }
+            RecordResponseDTO responseDTO = mapper.toResponseDTO(updated);
+
+            return ResponseEntity.ok(responseDTO);        }
 
         return ResponseEntity.notFound().build();
     }
@@ -89,8 +88,11 @@ public class RecordController implements GenericController {
         Optional<Record> possibleRecord = service.getRecord(UUID.fromString(id));
 
         if(possibleRecord.isPresent()) {
+
             Record record = possibleRecord.get();
             service.delete(record);
+
+            return ResponseEntity.noContent().build();
         }
 
         return ResponseEntity.notFound().build();

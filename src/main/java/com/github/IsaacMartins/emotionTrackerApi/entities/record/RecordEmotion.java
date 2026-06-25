@@ -2,15 +2,13 @@ package com.github.IsaacMartins.emotionTrackerApi.entities.record;
 
 import com.github.IsaacMartins.emotionTrackerApi.entities.emotion.Emotion;
 import jakarta.persistence.*;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.UUID;
 
 @Getter
 @Setter
+@ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 
