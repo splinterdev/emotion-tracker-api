@@ -1,4 +1,4 @@
-package com.github.IsaacMartins.emotionTrackerApi.controller.mappers;
+package com.github.IsaacMartins.emotionTrackerApi.controller.mapper;
 
 import com.github.IsaacMartins.emotionTrackerApi.controller.dto.recordDTOs.RecordRequestDTO;
 import com.github.IsaacMartins.emotionTrackerApi.controller.dto.recordDTOs.RecordResponseDTO;

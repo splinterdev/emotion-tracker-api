@@ -3,7 +3,7 @@ package com.github.IsaacMartins.emotionTrackerApi.controller;
 import com.github.IsaacMartins.emotionTrackerApi.controller.dto.recordDTOs.RecordRequestDTO;
 import com.github.IsaacMartins.emotionTrackerApi.controller.dto.recordDTOs.RecordResponseDTO;
 import com.github.IsaacMartins.emotionTrackerApi.controller.dto.statsDTOs.ChartStatDTO;
-import com.github.IsaacMartins.emotionTrackerApi.controller.mappers.RecordMapper;
+import com.github.IsaacMartins.emotionTrackerApi.controller.mapper.RecordMapper;
 import com.github.IsaacMartins.emotionTrackerApi.entities.record.Record;
 import com.github.IsaacMartins.emotionTrackerApi.service.ChartPoint;
 import com.github.IsaacMartins.emotionTrackerApi.service.RecordService;
