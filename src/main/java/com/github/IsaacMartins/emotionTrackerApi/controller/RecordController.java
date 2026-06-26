@@ -77,7 +77,8 @@ public class RecordController implements GenericController {
 
             RecordResponseDTO responseDTO = mapper.toResponseDTO(updated);
 
-            return ResponseEntity.ok(responseDTO);        }
+            return ResponseEntity.ok(responseDTO);
+        }
 
         return ResponseEntity.notFound().build();
     }
