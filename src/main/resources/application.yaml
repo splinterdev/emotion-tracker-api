@@ -17,6 +17,9 @@ spring:
       hibernate:
         type:
           preferred_uuid_jdbc_type: BINARY
+  jackson:
+    mapper:
+      accept_case_insensitive_enums: true
 
 springdoc:
   override-with-generic-response: false
