@@ -49,22 +49,6 @@ API REST de gerenciamento de emoções que permite realizar registros diários d
     "description": "Descrição sobre o momento presente."
 }
 ```
-ou
-```json
-{
-    "mood": "MAL",
-    "emotions": {
-        "emotionList": [
-            "RAIVA",
-            "FRUSTRACAO",
-            "CULPA",
-            "TRISTEZA"
-        ]
-    },
-    "situation": null,
-    "description": "Descrição sobre o momento presente."
-}
-```
 
 ## Estrutura
 
@@ -74,19 +58,19 @@ src/main/java/com.github.IsaacMartins.emotionTrackerApi/
 ├── controller/
 │   └── common/
 │   └── dto/
+│   |   └── errorDTOs/
 │   |   └── recordDTOs/
 │   |   └── situationDTOs/
-│   |   └── statsDTOS/
+│   |   └── statsDTOs/
 │   └── mapper/
 |
-├── exception/
 ├── entities/
 │   └── emotion/
 │   └── record/
 |
 ├── repository/
 ├── service/
-├── validator/
+├── resources/
 └── Program.java
 ```
 
