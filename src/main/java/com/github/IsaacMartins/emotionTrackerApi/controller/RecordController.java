@@ -7,6 +7,7 @@ import com.github.IsaacMartins.emotionTrackerApi.controller.mapper.RecordMapper;
 import com.github.IsaacMartins.emotionTrackerApi.entities.record.Record;
 import com.github.IsaacMartins.emotionTrackerApi.service.ChartPoint;
 import com.github.IsaacMartins.emotionTrackerApi.service.RecordService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +27,7 @@ public class RecordController implements GenericController {
     private final RecordMapper mapper;
 
     @PostMapping
-    public ResponseEntity<Object> create(@RequestBody RecordRequestDTO requestDTO) {
+    public ResponseEntity<Object> create(@RequestBody @Valid RecordRequestDTO requestDTO) {
 
         Record record = mapper.toEntity(requestDTO);
         service.create(record);
@@ -65,7 +66,7 @@ public class RecordController implements GenericController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Object> update(@PathVariable String id, @RequestBody RecordRequestDTO requestDTO) {
+    public ResponseEntity<Object> update(@PathVariable String id, @RequestBody @Valid RecordRequestDTO requestDTO) {
 
         Optional<Record> possibleRecord = service.getRecord(UUID.fromString(id));
 
