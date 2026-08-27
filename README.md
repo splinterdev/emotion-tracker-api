@@ -1,4 +1,4 @@
-# Emotion Tracker - API de gerenciamento de emoções 🧠
+# API de gerenciamento de emoções 🧠
 ![Java 21.0.6](https://img.shields.io/badge/Java-21.0.6-f08c00?style=flat&logo=openjdk&logoColor=white)
 ![Spring Boot 4.0.2](https://img.shields.io/badge/Spring_Boot-4.0.2-6DB33F?style=flat&logo=springboot&logoColor=white)
 ![MySQL 8.0](https://img.shields.io/badge/MySQL-8.0-0A2740?style=flat&logo=mysql&logoColor=white)
