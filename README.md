@@ -9,11 +9,11 @@ API REST de gerenciamento de emoções que permite realizar registros diários d
 ## Principais tecnologias utilizadas 
 
 - Java 21
-- Spring Boot 4.0.2 **para construção da API**
-- Swagger/OpenAPI 3.0.1 **para documentação**
-- imagem MySQL 8.0 + contêiner Docker **para persistência de dados**
-- Lombok **para código boilerplate**
-- Mapstruct **para mapeamento entre DTOs e entidades**
+- Spring Boot 4.0.2
+- Swagger/OpenAPI 3.0.1
+- imagem MySQL 8.0 + contêiner Docker
+- Lombok
+- Mapstruct
 
 ## Endpoints
 
