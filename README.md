@@ -3,7 +3,7 @@
 ![Spring Boot 4.0.2](https://img.shields.io/badge/Spring_Boot-4.0.2-6DB33F?style=flat&logo=springboot&logoColor=white)
 ![MySQL 8.0](https://img.shields.io/badge/MySQL-8.0-0A2740?style=flat&logo=mysql&logoColor=white)
 ![OpenAPI 2.8.14](https://img.shields.io/badge/OpenAPI-3.0.1-3C873A?style=flat&logo=swagger&logoColor=white)
-![status](https://img.shields.io/badge/status-pausado-yellow)
+![status](https://img.shields.io/badge/status-em_desenvolvimento-yellow)
 
 API REST de gerenciamento de emoções que permite realizar registros diários de humor, sentimentos e situações específicas do dia a dia, além de permitir a visualização de histórico dos registros e de tendência de humor por meio de gráfico, a fim de trazer clareza emocional, diminuindo problemas como o **viés da negatividade** e **padrões disfuncionais de comportamento**, baseado no método RPD (Registro de Pensamentos Disfuncionais) da Terapia Cognitivo-Comportamental (TCC).
 
