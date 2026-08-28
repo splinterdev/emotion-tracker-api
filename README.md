@@ -5,7 +5,7 @@
 ![OpenAPI 2.8.14](https://img.shields.io/badge/OpenAPI-3.0.1-3C873A?style=flat&logo=swagger&logoColor=white)
 ![status](https://img.shields.io/badge/status-pausado-yellow)
 
-API REST de gerenciamento de emoções que permite realizar registros diários de humor, sentimentos e situações específicas do dia a dia, além de permitir a visualização de histórico dos registros e a visualização de tendência de humor por meio de gráfico, a fim de trazer clareza emocional para o usuário final, diminuindo problemas como o **viés da negatividade** e **padrões disfuncionais de comportamento**.
+API REST de gerenciamento de emoções que permite realizar registros diários de humor, sentimentos e situações específicas do dia a dia, além de permitir a visualização de histórico dos registros e de tendência de humor por meio de gráfico, a fim de trazer clareza emocional, diminuindo problemas como o **viés da negatividade** e **padrões disfuncionais de comportamento**, baseado no método RPD (Registro de Pensamentos Disfuncionais) da Terapia Cognitivo-Comportamental (TCC).
 
 ## Principais tecnologias utilizadas 
 
